@@ -5,6 +5,10 @@ from django.shortcuts import render_to_response
 from documanager.forms import MarkdownForm
 from documanager.models import Stationary
 from documanager.utils import make_html
+
+
+from wsgiref.util import FileWrapper
+from pywkher import generate_pdf
 # Create your views here.
 
 def index(request):
@@ -20,6 +24,11 @@ def index(request):
                 return render_to_response('documanager/browser_render.html',
                     {'html':html, 'styling':styling},
                     context_instance = RequestContext(request))
+            elif 'print' in request.POST:
+                pdf_file = generate_pdf(html=html)
+                response = HttpResponse(FileWrapper(pdf_file),
+                        content_type = 'application/pdf')
+                return response
     else:
         form = MarkdownForm()
     
@@ -37,3 +46,6 @@ def print_to_browser(request):
         return HttpResponse("woot woot")
     else: 
         return HttpResponseRedirect(reverse('documanager:index'))
+
+def print_to_pdf(request):
+    return HttpResponse("woot woot!")

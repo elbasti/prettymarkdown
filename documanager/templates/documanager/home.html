@@ -3,7 +3,8 @@
 <form action='' method="post"> {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn">Process Me!</button>
-    <button type="submit" class = "btn" name="generate">Render Me!</button>
+    <button type="submit" class="btn" name="generate">Render Me!</button>
+    <button type="submit" class="btn" name="print">Print Me</button>
 </form>
 
 {{html}}
