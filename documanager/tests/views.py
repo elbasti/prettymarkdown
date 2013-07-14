@@ -82,22 +82,3 @@ class PrintTestCase(TestCase):
         self.assertEqual(self.response['Content-Type'], 'application/pdf')
 
 
-class print_to_browserTestCase(TestCase):
-    def setUp(self):
-        self.view_url = reverse('documanager:print_to_browser')
-        self.index_url = reverse('documanager:index')
-
-    def test_redirects_if_not_post(self):
-        response = self.client.get(self.view_url)
-        self.assertRedirects(response, self.index_url)
-
-    def test_returns_ok_if_post(self):
-        response = self.client.post(self.view_url)
-
-class print_to_pdfviewTestCase(TestCase):
-    def setUp(self):
-        self.view_url = reverse('documanager:print_to_pdf')
-        self.response = self.client.get(self.view_url)
-
-    def test_returns_ok(self):
-        self.assertEquals(self.response.status_code, 200)
