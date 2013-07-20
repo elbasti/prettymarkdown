@@ -1,0 +1,62 @@
+body {
+    background-image:url('/static/img/cream_pixels.png');
+    border-top: 4px solid #34495e;
+}
+
+.textarea-large {
+    width: 400px;
+    resize: none;
+}
+
+#center-column{
+    padding-left: 20px;
+    padding-right: 20px;
+    background: #f6f8f8;
+    padding-bottom: 80px;
+}
+
+.logotype{
+   font-size: 4em;
+   padding-top:100px;
+   padding-bottom: 60px;
+}
+
+.container{
+    background: #f6f8f8;
+    border-left: 2px solid;
+    border-right: 2px solid;
+}
+
+.pretty-pretty{
+    font-family: 'Parisienne', cursive;
+}
+
+footer {
+    padding-top: 20px;
+    border-top: solid 2px;
+    border-color: #34495e;
+    color: #34495e;
+    height: 200px;
+}
+
+.code-box{
+    min-height: 7em;
+    max-height: 22em;
+    overflow: auto;
+}
+
+.well{
+    background: #ffffff;
+}
+
+pre{
+    background: #DDDFDF;
+}
+
+.vertical-shim{
+    height: 1em;
+}
+
+.vertical-shim2{
+    height: 2em;
+}

@@ -13,7 +13,12 @@
             <meta name="author" content="Sebastian Villarreal">
         {% endblock meta %}
         {% block styles %}
-
+        <link href="{% static "bootstrap/css/bootstrap-responsive.css" %}" rel='stylesheet'>
+        <link href="{% static "bootstrap/css/bootstrap.css" %}" rel='stylesheet'>
+        <link href="{% static "bootstrap/css/prettify.css" %}" rel='stylesheet'>
+        <link href="{% static "css/flat-ui.css" %}" rel='stylesheet'>
+        <link href="{% static "css/custom-style.css" %}" rel='stylesheet'>
+        <link href='http://fonts.googleapis.com/css?family=Parisienne' rel='stylesheet' type='text/css'>
         {% endblock styles %}
         {% block icons %}
         {% endblock icons %}
@@ -24,12 +29,40 @@
     <body>
         {% block body %}
             {% block menu %}
+                <div class="navbar navbar-fixed-top navbar-inverse">
+                    <div class="navbar-inner">
+                        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="#nav-collapse-01"></button>
+                        <div class="nav-collapse collapse" id="#nav-collapse-01">
+                            <ul class="nav">
+                                <li><a class="brand" style="text-decoration: none;"><span id="pretty-pretty">Pretty</span><span><b>Markdown</b></span></a></li>
+                                <li class="active"><a href="#">Home</a></li>
+                                <li><a href="#">Credits</a></li>
+                                <li><a href="#">Something Else</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             {% endblock menu %}
-            {% block sidebar %}
-            {% endblock sidebar %}
-            {% block content %}
-            {% endblock content %}
+            <div class="container">
+                {% block sidebar %}
+                {% endblock sidebar %}
+                {% block content %}
+                {% endblock content %}
+            </div>
+            </div>
             {% block footer %}
+            <footer>
+            <div class="container-fluid">
+                <div class="footer">
+                    <p class="text-center"><span class="fui-heart"> Made with love by <a href="http://www.elbasti.com" target="_blank">Sebastian Villarreal </a><span class="fui-heart"></p>
+                            <p class="text-center">I couldn't have built this without:</p>
+                            <ul class="text-center unstyled">
+                                <li><a href="http://twitter.github.io/bootstrap/" target="_blank">Bootstrap</a></li>
+                                <li><a href="http://designmodo.github.io/Flat-UI/"target="_blank">Flat UI Free</a></li>
+                                <li><a href="https://www.djangoproject.com/" target="_blank">Django</a></li>
+                            </ul>
+                </div>
+            </footer>
             {% endblock footer %}
 
             {% block javascript %}

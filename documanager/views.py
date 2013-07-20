@@ -16,7 +16,7 @@ def index(request):
     if request.method == 'POST':
         form = MarkdownForm(request.POST)
         if form.is_valid():
-            html = make_html(form.cleaned_data['markdown_input']) 
+            html = make_html(form.cleaned_data['markdown_input'])
             context_dict['html'] = html
             styling = form.cleaned_data['stationary'].styling
             render_dict =  {'html':html, 'styling':styling}

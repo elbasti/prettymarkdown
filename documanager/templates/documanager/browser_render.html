@@ -1,5 +1,10 @@
+{% block styles %}
+<head>
+    <style>
+        {{styling|safe}}
+    </style>
+</head>
+{% endblock styles %}
 {% block content %}
-woot
-HTML: {{html|safe}}
-CSS: {{styling}}
+    {{html|safe}}
 {% endblock content %}

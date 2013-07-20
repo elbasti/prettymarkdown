@@ -1,12 +1,64 @@
 {% extends "documanager/base.html" %}
+{% block menu %}
+<!-- No menu -->
+{% endblock menu %}
+
 {% block content %}
-<form action='' method="post"> {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn">Process Me!</button>
-    <button type="submit" class="btn" name="generate">Render Me!</button>
-    <button type="submit" class="btn" name="print">Print Me</button>
-</form>
-
-{{html}}
-
+<div id="center-column">
+    <div class="row-fluid">
+        <div class="logotype span6 offset3 text-center">
+            <span class="pretty-pretty">Pretty</span><span><b>Markdown</b></span>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            <h2 class="text-center">Markdown content goes here</h2>
+            <form  action='' method="post"> {% csrf_token %}
+                <div class="control-group {% if form.markdown_input.errors %} error {% endif %} {%if html %} success {% endif %}">
+                    <div class="controls">
+                        <div class="text-error">
+                            {{form.markdown_input.errors}}       
+                        </div>
+                        <textarea cols="90" class="textarea-large" id="id_markdown_input" name="markdown_input" rows="10" placeholder="Enter your Markdown text here...">{% firstof form.markdown_input.value %}</textarea>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span6 offset3 text-center">
+            <div class="control-group {% if html %} success {% endif %}">
+                <div class="controls">
+                    {{form.stationary}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span6 offset3 text-center">
+           <button type="submit" class="btn btn-large btn-primary">HTML Only</button>
+           <button type="submit" class="btn btn-large btn-success" name="generate" target="_blank">Web Preview</button>
+            <button type="submit" class="btn btn-large btn-danger" name="print" target="_blank">PDF</button>
+        </form>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="row-fluid">
+                <div class="vertical-shim2"></div>
+                <h2 class="text-center pretty-pretty">Html comes out here</h2>
+            </div>
+            <div class="row-fluid">
+                <div class="span12 well">
+                    <pre>
+                        <div class="code-box">{{html}}</div>
+                    </pre>
+                </div>
+            </div>
+        </div>
+        <div>
+    </div>
+</div>
 {% endblock content %} 
+{% block footer %}
+{{ block.super }}
+{% endblock footer %}

@@ -6,5 +6,5 @@ def make_html(plain_text = None):
         raise ValueError("Please provide some text to convert")
     else:
         html = markdown2.markdown(plain_text, extras=["wiki-tables"])
-        return html
+        return html.lstrip()
         

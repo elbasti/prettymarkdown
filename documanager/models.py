@@ -6,7 +6,7 @@ class Stationary(models.Model):
     styling = models.TextField(verbose_name = "CSS Styling")
     
     def __unicode__(self):
-        return self.name
+        return "%s Stationary" % (self.name)
 
     class Meta:
         ordering = ['name',]
