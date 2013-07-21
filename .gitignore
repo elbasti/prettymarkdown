@@ -31,3 +31,6 @@ nosetests.xml
 
 # vim swaps
 *.swp
+
+# dev settings
+dev_settings.*

@@ -1,6 +1,7 @@
 # Tests for documanager utils
 from django.test import TestCase
 from documanager.utils import make_html
+from django.core.exceptions import ObjectDoesNotExist
 
 class MarkdownProcessTestCase(TestCase):
     
@@ -18,3 +19,4 @@ class MarkdownProcessTestCase(TestCase):
         table = "|| col1 || col2 || col3 ||"
         html = make_html(table)
         self.assertNotEqual(html.find('<table>'), -1)
+
