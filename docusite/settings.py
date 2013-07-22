@@ -1,4 +1,5 @@
-# Django settings for docusite project.
+import os
+# Django settings for docusite projecit.
 DEBUG = False
 
 TEMPLATE_DEBUG = DEBUG
@@ -156,7 +157,7 @@ LOGGING = {
 
 #HEROKU SETTINGS
 
-SECRET_KEY = System.getenv("SECRET_KEY")
+SECRET_KEY = os.environ['SECRET_KEY']
 
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
