@@ -110,8 +110,6 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(os.path.abspath(__file__+"/../../"), 'templates')
     )
-import pdb
-pdb.set_trace()
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
