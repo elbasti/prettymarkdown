@@ -1,6 +1,8 @@
 # Django settings for docusite project.
+DEBUG = False
 
 TEMPLATE_DEBUG = DEBUG
+
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -54,13 +56,6 @@ STATIC_ROOT = ''
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
 
-# Additional locations of static files
-STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-   '/home/sebastian/Development/docusite/docusite/Static', 
-)
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -70,8 +65,6 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'sz#l2%9&exr6)t7sx@o2w&gx-xt5j0n(_=)3+z2ci6%06kq(94'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -99,7 +92,6 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/home/sebastian/Development/docusite/docusite/Templates',
     )
 
 
@@ -146,3 +138,30 @@ LOGGING = {
         },
     }
 }
+
+#HEROKU SETTINGS
+
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
+
+# Static asset configuration
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = 'staticfiles'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+            os.path.join(BASE_DIR, 'static'),
+            )
+
+# Local Settings
+try:
+    from dev_settings import *
+except ImportError:
+    pass
