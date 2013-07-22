@@ -157,7 +157,6 @@ LOGGING = {
 
 #HEROKU SETTINGS
 
-SECRET_KEY = os.environ['SECRET_KEY']
 
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
@@ -178,6 +177,7 @@ STATICFILES_DIRS = (
             os.path.join(BASE_DIR, 'static'),
             )
 
+SECRET_KEY = os.environ['SECRET_KEY']
 # Local Settings
 #try:
 #    from dev_settings import *
