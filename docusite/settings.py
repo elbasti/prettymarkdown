@@ -160,7 +160,7 @@ LOGGING = {
 
 import dj_database_url
 
-dbconfig =  dj_database_url.config(default='postgres://localhost/db_name')
+dbconfig =  dj_database_url.config()
 
 if dbconfig:
     DATABASES['default'] = dbconfig 
