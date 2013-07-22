@@ -155,6 +155,9 @@ LOGGING = {
 }
 
 #HEROKU SETTINGS
+
+SECRET_KEY = System.getenv("SECRET_KEY")
+
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
 
