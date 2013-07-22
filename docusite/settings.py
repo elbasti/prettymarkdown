@@ -1,6 +1,6 @@
 import os
 # Django settings for docusite projecit.
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
