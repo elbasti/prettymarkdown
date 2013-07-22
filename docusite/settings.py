@@ -108,7 +108,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(os.path.abspath(__file__+"/../../"), 'templates')
+    os.path.join(os.path.abspath(__file__+"/../../"), 'Templates')
     )
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -155,34 +155,36 @@ LOGGING = {
 }
 
 #HEROKU SETTINGS
+import socket
+if socket.gethostname() != 'sebastian-vm':
 
+    import dj_database_url
 
-import dj_database_url
+    dbconfig =  dj_database_url.config()
 
-dbconfig =  dj_database_url.config()
+    if dbconfig:
+        DATABASES['default'] = dbconfig 
 
-if dbconfig:
-    DATABASES['default'] = dbconfig 
+    #Honor the 'X-Forwarded-Proto' header for request.is_secure()
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-#Honor the 'X-Forwarded-Proto' header for request.is_secure()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    # Allow all host headers
+    ALLOWED_HOSTS = ['*']
 
-# Allow all host headers
-ALLOWED_HOSTS = ['*']
+    # Static asset configuration
+    import os
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    STATIC_ROOT = 'staticfiles'
+    STATIC_URL = '/static/'
 
-# Static asset configuration
-import os
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
+    STATICFILES_DIRS = (
+                os.path.join(BASE_DIR, 'static'),
+                )
 
-STATICFILES_DIRS = (
-            os.path.join(BASE_DIR, 'static'),
-            )
-
-SECRET_KEY = os.environ['SECRET_KEY']
+    SECRET_KEY = os.environ['SECRET_KEY']
+else:
 # Local Settings
-#try:
-#    from dev_settings import *
-#except ImportError:
-#    pass
+    try:
+        from dev_settings import *
+    except ImportError:
+        pass
