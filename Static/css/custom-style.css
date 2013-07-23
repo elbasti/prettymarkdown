@@ -31,6 +31,11 @@ body {
     font-family: 'Parisienne', cursive;
 }
 
+.h3-text{
+    font-size: 26px;
+    font-weight: 700;
+}
+
 footer {
     padding-top: 20px;
     border-top: solid 2px;

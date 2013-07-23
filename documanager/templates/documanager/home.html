@@ -24,7 +24,7 @@
                         <div class="text-error">
                             {{form.markdown_input.errors}}       
                         </div>
-                        <textarea cols="90" class="textarea-large" id="id_markdown_input" name="markdown_input" rows="10" placeholder="Enter your Markdown text here...">{% firstof form.markdown_input.value %}</textarea>
+                        <textarea cols="90" class="textarea-large" id="id_markdown_input" name="markdown_input" rows="10" placeholder="{% include "documanager/md_placeholder.txt" %}">{% firstof form.markdown_input.value %}</textarea>
                     </div>
                 </div>
         </div>
@@ -34,7 +34,7 @@
             <div class="control-group {% if html %} success {% endif %}">
                 <div class="controls">
                     <i class="dropdown-arrow dropdown-arrow-inverse"></i>
-                    <select id="{{form.stationary.auto_id}}" class="selectpicker dropup " data-style="btn-primary" name="{{form.stationary.name}}" >
+                    <span class="h2-text">Pick a PDF Stationary: </span>                    <select id="{{form.stationary.auto_id}}" class="selectpicker dropup " data-style="btn-primary" name="{{form.stationary.name}}" >
                         {% for id, name  in form.stationary.field.choices  %}
                             <option value="{{ id }}">{{ name }}</option>
                         {% endfor %}
