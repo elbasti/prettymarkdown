@@ -13,6 +13,7 @@
     <div class="row-fluid">
         <div class="logotype span6 offset3 text-center">
             <span class="pretty-pretty">Pretty</span><span><b>Markdown</b></span>
+            <p class="lead">Takes your Markdown and gives you a pretty PDF</p>
         </div>
     </div>
     <div class="row-fluid">
@@ -34,7 +35,7 @@
             <div class="control-group {% if html %} success {% endif %}">
                 <div class="controls">
                     <i class="dropdown-arrow dropdown-arrow-inverse"></i>
-                    <span class="h2-text">Pick a PDF Stationary: </span>                    <select id="{{form.stationary.auto_id}}" class="selectpicker dropup " data-style="btn-primary" name="{{form.stationary.name}}" >
+                    <select id="{{form.stationary.auto_id}}" class="selectpicker dropup " data-style="btn-primary" name="{{form.stationary.name}}" >
                         {% for id, name  in form.stationary.field.choices  %}
                             <option value="{{ id }}">{{ name }}</option>
                         {% endfor %}
