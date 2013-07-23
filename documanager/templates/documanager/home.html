@@ -34,7 +34,7 @@
             <div class="control-group {% if html %} success {% endif %}">
                 <div class="controls">
                     <i class="dropdown-arrow dropdown-arrow-inverse"></i>
-                    <select id="{{form.stationary.auto_id}}" data-style="btn-primary" class="selectpicker dropup">
+                    <select id="{{form.stationary.auto_id}}" class="selectpicker dropup " data-style="btn-primary" name="{{form.stationary.name}}" >
                         {% for id, name  in form.stationary.field.choices  %}
                             <option value="{{ id }}">{{ name }}</option>
                         {% endfor %}
